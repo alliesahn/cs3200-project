@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.home,
+#nyc-neighborhoods,
+#boston-neightborhoods {
+	min-height: 100%;
+}
+
+.intro-text {
+	margin: 150px 0 75px 0;
+	text-align: center;
+}
+.title {
+	font: 32px'Raleway', sans-serif;
+}
+
+.subtitle {
+	font: 18px 'Raleway', sans-serif;
+}
+
+span {
+	font-style: italic;
+}
+
+.cities {
+	text-align: center;
+}
+.nyc,
+.boston {
+	background-color:#5fd980;
+	border-radius:10px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:22px;
+	font-weight:bold;
+	padding:22px 33px;
+
+	text-decoration:none;
+	width: 250px;
+}
+.nyc:hover,
+.boston:hover {
+	background-color:#23c24d;
+}
+.nyc:active,
+.boston:active {
+	position:relative;
+	top:1px;
+}
