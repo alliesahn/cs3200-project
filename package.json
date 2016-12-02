@@ -1,0 +1,23 @@
+{
+  "name": "cs3200-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alliesahn/cs3200-project.git"
+  },
+  "author": "Steven McKinless",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alliesahn/cs3200-project/issues"
+  },
+  "homepage": "https://github.com/alliesahn/cs3200-project#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mysql2": "^1.1.2"
+  }
+}
