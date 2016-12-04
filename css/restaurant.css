@@ -7,10 +7,12 @@
 	text-align: center;
 }
 
-.restaurant-listing {
+#restaurant-listing {
 	display: flex;
-	margin: 50px 340px;
+	flex-wrap: wrap;
+	margin: 25px auto;
 	justify-content: space-between;
+    width: 400px;
 }
 .restaurant-name {
 	font: bold 24px 'Raleway', sans-serif;
@@ -18,5 +20,9 @@
 }
 
 .restaurant-info {
-	font: 18px 'Raleway', sans-serif;
+	font: 14px 'Raleway', sans-serif;
+}
+
+#map {
+	margin: 0px auto;
 }

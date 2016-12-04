@@ -65,7 +65,7 @@ span {
 }
 
 .soho,
-.west-village,
+.midtown,
 .east-village,
 .fenway,
 .back-bay,
@@ -85,7 +85,7 @@ span {
 }
 
 .soho:hover,
-.west-village:hover,
+.midtown:hover,
 .east-village:hover {
 	background-color: #1589FF;
 }

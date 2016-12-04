@@ -1,18 +1,59 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../restaurant.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9kyezE1vqlngp7OCyj9diGtZeIsGYxkc"
+  type="text/javascript"></script>
+
 </head>
 <body>
 <h1 class="nbh-title">Taco Restaurants in {{ results[0].neighborhood }}</h1>
-<div class="restaurant-listing">
+<div id="restaurant-listing" data-restaurants="{{ results }}">
 	{% for restaurant in results %}
 	<div class="restaurant">
 		<h2 class="restaurant-name">{{ restaurant.name }}</h2>
 		<div class="restaurant-info">
-			<h3 class="r-city">City : {{ restaurant.city }}</h3>
-			<h3 class="r-menu">Menu : <a href="{{ restaurant.menuLink }}">Menu Link</a></h3>
+			<h3 class="r-price">Price Average: {{ restaurant.priceAvg }}</h3>
+			<h3 class="r-menu">Menu: <a href="{{ restaurant.menuLink }}">Menu Link</a></h3>
 		</div>
 	</div>
 	{% endfor %}
 </div>
+<div id="map" style="width: 700px; height: 400px;"></div>
+<script type="text/javascript">
+    var locations = [],
+    	results = JSON.parse(JSON.stringify({{ results | dump | safe }}));
+
+    for (i = 0; i < results.length; i++) {
+    	restaurant = [];
+    	restaurant.push(results[i].name, results[i].latitude, results[i].longitude);
+    	locations.push(restaurant);
+    }
+
+    console.log(locations);
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: new google.maps.LatLng(42.3429, -71.1003),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
 </body>
 
