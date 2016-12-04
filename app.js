@@ -6,11 +6,12 @@ var bcrypt = require('bcrypt');
 var app = express();
 
 
-var connection = mysql.createConnection({host:'localhost', user:'root', password:'root', database:'tacos'});
+var connection = mysql.createConnection({host:'localhost', user:'root', password:'steviebca', database:'tacos'});
 app.use(express.static(path.join(__dirname, 'css')));
 app.use(express.static(path.join(__dirname, 'js')));
-//app.set('views', path.join(__dirname, app.get('assets_path') + '/views'));
-//app.set('view engine', 'njk');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setup nunjucks templating engine
 nunjucks.configure('views', {
@@ -21,10 +22,6 @@ nunjucks.configure('views', {
 });
 
 app.get('/', function(req, res) {
-	// connection.query('SELECT * FROM Location', function (err, results, fields) {
-	// 	console.log(results);
-	// });
-	console.log(bcrypt.hashSync('234232fsfs', 10));
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
@@ -35,6 +32,29 @@ app.get('/:cityName/:neighborhoodName', function(req, res) {
 		res.render('neighborhood.html', { results : results });
 		console.log(results);
 	});
+	
+});
+
+app.get('/signup', function(req, res) {
+	res.render('signup.html');
+});
+
+app.post('/signup', function(req, res) {
+	var username = req.body.username;
+	var email = req.body.email;
+    var password = req.body.password;
+    connection.query('SELECT * FROM User WHERE username = "' + username + '" OR email = "' + email + '";', function(err, results, fields) {
+    	if (results.length > 0) {
+    		res.redirect('/signup');
+
+    	}
+    	else {
+    		connection.execute('INSERT INTO User (username, password, email) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'");', function(err, results, fields) {
+    			res.send("You are signed up!");
+   			});
+    	}
+    });
+    
 	
 });
 
