@@ -9,14 +9,26 @@
 		<h3 class="subtitle">Select your city below to look for taco places near you.</h3>
 	</div>
 	<form class="cities">
-		<button class="nyc" value="" type="button" onclick="smoothScroll(document.getElementById('nyc-neighborhoods'))">New York City</button>
-		<button class="boston" value="" type="button">Boston</button>
+		<button class="nyc" type="button" onclick="smoothScroll(document.querySelector('.nyc-neighborhoods'))">New York City</button>
+		<button class="boston" type="button" onclick="smoothScroll(document.querySelector('.boston-neighborhoods'))">Boston</button>
 	</form>
 </div>
-<div id="nyc-neighborhoods">
-	<h1>womp</h1>
-</div>
-<div id="boston-neighborhoods">
-
+<div class="neighborhoods">
+	<div class="nyc-neighborhoods">
+		<h2 class="neighborhood-title">New York City Neighborhoods</h1>
+		<div class="nbh-list">
+			<button class="soho" type="button">SoHo</button>
+			<button class="west-village" type="button">West Village</button>
+			<button class="east-village" type="button">East Village</button>
+		</div>
+	</div>
+	<div class="boston-neighborhoods">
+		<h2 class="neighborhood-title">Boston Neighborhoods</h1>
+		<div class="nbh-list">
+			<button class="fenway" type="button">Fenway</button>
+			<button class="back-bay" type="button">Back Bay</button>
+			<button class="south-end" type="button">South End</button>
+		</div>
+	</div>
 </div>
 </body>
