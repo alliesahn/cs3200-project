@@ -3,6 +3,7 @@ var app = express();
 var mysql = require('mysql2');
 var path = require('path');
 var nunjucks = require('nunjucks');
+var bcrypt = require('bcrypt');
 
 var connection = mysql.createConnection({host:'localhost', user:'root', password:'steviebca', database:'tacos'});
 app.use(express.static(path.join(__dirname, 'css')));
@@ -21,6 +22,7 @@ app.get('/', function(req, res) {
 	// connection.query('SELECT * FROM Location', function (err, results, fields) {
 	// 	console.log(results);
 	// });
+	console.log(bcrypt.hashSync('234232fsfs', 10));
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
@@ -29,6 +31,7 @@ app.get('/:cityName/:neighborhoodName', function(req, res) {
 		res.send(results);
 		console.log(results);
 	});
+	res.sendFile(path.join(__dirname, '/views/neighborhood.html'));
 });
 
 app.listen(3000, function() {
