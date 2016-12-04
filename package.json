@@ -18,6 +18,7 @@
   "homepage": "https://github.com/alliesahn/cs3200-project#readme",
   "dependencies": {
     "express": "^4.14.0",
-    "mysql2": "^1.1.2"
+    "mysql2": "^1.1.2",
+    "nunjucks": "^3.0.0"
   }
 }
