@@ -29,7 +29,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/:cityName/:neighborhoodName', function(req, res) {
-	connection.query('SELECT * FROM TacoRestaurant JOIN Location ON TacoRestaurant.locationId = Location.locationId JOIN Review ON Review.storeId = TacoRestaurant.storeId JOIN Neighborhood ON Neighborhood.neighborhoodId = Location.neighborhoodId JOIN City ON City.cityId = Neighborhood.cityId WHERE Neighborhood.name = "' + req.params.neighborhoodName + '" AND City.name = "' + req.params.cityName + '";', function (err, results, fields) {
+	connection.query('SELECT * FROM TacoRestaurant JOIN Location ON TacoRestaurant.locationId = Location.locationId JOIN Review ON Review.storeId = TacoRestaurant.storeId JOIN Neighborhood ON Neighborhood.neighborhoodId = Location.neighborhoodId JOIN City ON City.cityId = Neighborhood.cityId WHERE Neighborhood.neighborhood = "' + req.params.neighborhoodName + '" AND City.city = "' + req.params.cityName + '";', function (err, results, fields) {
 		//res.send(results);
 		results = JSON.parse(JSON.stringify(results))[0];
 		res.render('neighborhood.html', { results : results });
