@@ -2,10 +2,20 @@ var express = require('express');
 var app = express();
 var mysql = require('mysql2');
 var path = require('path');
+var nunjucks = require('nunjucks');
 
 var connection = mysql.createConnection({host:'localhost', user:'root', password:'steviebca', database:'tacos'});
 app.use(express.static(path.join(__dirname, 'css')));
 app.use(express.static(path.join(__dirname, 'js')));
+app.set('views', path.join(__dirname, app.get('assets_path') + '/views'));
+
+// Setup nunjucks templating engine
+nunjucks.configure(app.get('views'), {
+    autoescape: true,
+    noCache: true,
+    watch: true,
+    express: app
+});
 
 app.get('/', function(req, res) {
 	// connection.query('SELECT * FROM Location', function (err, results, fields) {
