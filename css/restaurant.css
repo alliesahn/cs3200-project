@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.nbh-title {
+	font: bold 32px 'Montserrat', sans-serif;
+	margin-top: 50px;
+	text-align: center;
+}
+
+.restaurant-listing {
+	display: flex;
+	margin: 50px 340px;
+	justify-content: space-between;
+}
+.restaurant-name {
+	font: bold 24px 'Raleway', sans-serif;
+	text-decoration: underline;
+}
+
+.restaurant-info {
+	font: 18px 'Raleway', sans-serif;
+}
