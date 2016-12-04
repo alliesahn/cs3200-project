@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/alliesahn/cs3200-project#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "express": "^4.14.0",
     "mysql2": "^1.1.2",
     "nunjucks": "^3.0.0"
