@@ -68,7 +68,7 @@ span {
 .midtown,
 .east-village,
 .fenway,
-.back-bay,
+.mission-hill,
 .south-end {
 	background-color:#3090C7;
 	border-radius:10px;
@@ -86,6 +86,9 @@ span {
 
 .soho:hover,
 .midtown:hover,
-.east-village:hover {
+.east-village:hover,
+.fenway:hover,
+.mission-hill:hover,
+.south-end:hover {
 	background-color: #1589FF;
 }

@@ -12,7 +12,7 @@
 	flex-wrap: wrap;
 	margin: 25px auto;
 	justify-content: space-between;
-    width: 400px;
+    width: 500px;
 }
 .restaurant-name {
 	font: bold 24px 'Raleway', sans-serif;
@@ -21,6 +21,12 @@
 
 .restaurant-info {
 	font: 14px 'Raleway', sans-serif;
+}
+
+.empty-title {
+	font: bold 32px 'Montserrat', sans-serif;
+	margin-top: 80px;
+	text-align: center;
 }
 
 #map {

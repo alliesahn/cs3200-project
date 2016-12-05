@@ -5,8 +5,9 @@
 
 </head>
 <body>
-<h1 class="nbh-title">Taco Restaurants in {{ results[0].neighborhood }}</h1>
 <div id="restaurant-listing" data-restaurants="{{ results }}">
+	{% if results.length %}
+	<h1 class="nbh-title">Taco Restaurants in {{ results[0].neighborhood }}</h1>
 	{% for restaurant in results %}
 	<div class="restaurant">
 		<h2 class="restaurant-name">{{ restaurant.name }}</h2>
@@ -16,10 +17,17 @@
 		</div>
 	</div>
 	{% endfor %}
+	{% else %}
+	<div class="empty-data">
+		<h2 class="empty-title">There are currently no taco restaurants in this area :(</h2>
+		<img src="http://dallascomedyhouse.com/media/sad-taco.jpg">
+	</div>
+	{% endif %}
 </div>
+{% if results.length %}
 <div id="map" style="width: 700px; height: 400px;"></div>
 <script type="text/javascript">
-    var locations = [],
+    var locations = [], latitudes = [], longitudes = [], centerX = 0, centerY = 0,
     	results = JSON.parse(JSON.stringify({{ results | dump | safe }}));
 
     for (i = 0; i < results.length; i++) {
@@ -28,12 +36,28 @@
     	locations.push(restaurant);
     }
 
-    console.log(locations);
+    // CALCULATING CENTER OF MAP 
+   for (i = 0; i < results.length; i++) {
+   		latitudes.push(results[i].latitude);
+   }
 
+   for (i = 0; i < results.length; i++) {
+   		longitudes.push(results[i].longitude);
+   }
+
+   for (i = 0; i < latitudes.length; i++) {
+   		centerX += latitudes[i];
+   }
+   centerX = centerX / latitudes.length;
+
+   for (i = 0; i < longitudes.length; i++) {
+   		centerY += longitudes[i];
+   }
+   centerY = centerY / longitudes.length;
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 15,
-      center: new google.maps.LatLng(42.3429, -71.1003),
+      center: new google.maps.LatLng(centerX, centerY),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -55,5 +79,6 @@
       })(marker, i));
     }
   </script>
+ {% endif %}
 </body>
 
