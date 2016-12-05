@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.signin-intro {
+	font: 18px 'Raleway', sans-serif;
+	margin-top: 100px;
+	text-align: center;
+}
+.sign-in {
+	font: 16px 'Montserrat', sans-serif;
+	margin: 0px auto;
+	padding-bottom: 25px;
+	text-align: center;
+	width: 290px;
+}
+
+.username,
+.password {
+	font: 16px 'Montserrat', sans-serif;
+	margin-bottom: 10px;
+}
+
+.pw-text {
+	padding-right: 4px;
+}
+
+.submit-button {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#ffffff;
+	border-radius:16px;
+	border:2px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#383638;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:6px 11px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.submit-button:hover {
+	background-color:#f6f6f6;
+}
+.submit-button:active {
+	position:relative;
+	top:1px;
+}
+
+.no-account {
+	border-top: 2px solid black;
+    font: 18px 'Raleway', sans-serif;
+    text-align: center;
+    width: 60%;
+    margin: 0px auto;
+}
+.register {
+	background-color:#5fd980;
+	border-radius:10px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:15px;
+	text-decoration:none;
+	width: 150px;
+}
+.register:hover {
+	background-color:#23c24d;
+}

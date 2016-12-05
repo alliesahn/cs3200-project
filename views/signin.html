@@ -1,5 +1,17 @@
-<form action="signin" method="POST">
-	<input type="text" name="username"/>
-	<input type="password" name="password"/>
-	<input type="submit"/>
+<head>
+<link rel="stylesheet" type="text/css" href="users.css">
+</head>
+<body>
+<div class="signin-intro">
+	<h3>Sign in to your account below</h3>
+</div>
+<form class="sign-in" action="signin" method="POST">
+	<span>Username:</span> <input class="username" type="text" name="username"/>
+	<span class="pw-text">Password:</span> <input class="password" type="password" name="password"/>
+	<input class="submit-button" type="submit"/>
 </form>
+<div class="no-account">
+	<h4>No account? Register here!</h4>
+	<a href="/signup"><button class="register" type="button">Register</button></a>
+</div>
+</body>
