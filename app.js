@@ -62,14 +62,17 @@ app.post('/signup', function(req, res) {
 	var email = req.body.email;
     var password = req.body.password;
     connection.query('SELECT * FROM User WHERE username = "' + username + '" OR email = "' + email + '";', function(err, results, fields) {
-    	if (results.length > 0) {
-    		res.redirect('/signup');
-
+    	console.log(results.length);
+    	if (results.length == 0) {
+    		connection.execute('INSERT INTO User (username, password, email) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'");', function(err, results, fields) {
+    			console.log(err);
+   			});
+    		req.session.user = { username : req.body.username, email : req.body.email }
+    		res.redirect('/');
+   			
     	}
     	else {
-    		connection.execute('INSERT INTO User (username, password, email) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'");', function(err, results, fields) {
-    			res.send("You are signed up!");
-   			});
+    		res.redirect('/signin');
     	}
     });
     
@@ -92,6 +95,9 @@ app.post('/signin', function(req, res) {
 			else {
 				res.render('signin.html', { error : 'Invalid username or password' });
 			}
+		}
+		else {
+			res.render('signin.html', { error : 'Invalid username or password' });
 		}
 	});
 });
