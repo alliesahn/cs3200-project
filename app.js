@@ -175,7 +175,14 @@ app.post('/review/create/:storeId', requireLogin, function(req, res) {
 		console.log(err);
 		res.send('Your review is posted!');
 	});
-})
+});
+
+app.get('/review/list/:storeId', function(req, res) {
+	connection.query('SELECT * FROM Review WHERE storeId = "' + req.params.storeId + '";', function(err, results, fields) {
+		console.log(err);
+		res.render("reviewList.html", results=results);
+	}
+});
 
 app.listen(3000, function() {
 	console.log("App running on port 3000.");
