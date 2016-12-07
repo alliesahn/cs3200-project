@@ -41,7 +41,7 @@ function requireLogin (req, res, next) {
 };
 
 function requireAdmin (req, res, next) {
-	req.session.user = { username : 'admin', email : 'admin', isAdmin : true }
+	req.session.user = { username : 'admin', email : 'admin', isAdmin : 1 }
 	if (!req.session.user || !req.session.user.isAdmin) {
 		res.redirect('/adminSignin');
 	} 
@@ -101,6 +101,7 @@ app.post('/signin', function(req, res) {
 			results = JSON.parse(JSON.stringify(results));
 			if (bcrypt.compareSync(req.body.password, results[0]['password'])) {
 				req.session.user = results[0];
+				console.log(req.session.user);
 				delete req.session.user.password;
 				res.redirect(req.session.redirectTo || '/');
 				delete req.session.returnTo;
@@ -120,29 +121,45 @@ app.get('/logout', function(req, res) {
 	res.redirect('/');
 });
 
-// app.get('/adminSignin', function(req, res) {
-// 	res.render('signin.html');
-// });
+app.get('/profile/edit/:username', requireLogin, function(req, res) {
+	results = req.session.user;
+	//res.send("hi");
+	console.log("ad" + req.params.username);
+	res.render('profile.html', { results : results });
+});
 
-// app.post('/adminSignin', function(req, res) {
-// 	connection.query('SELECT * FROM User WHERE username = "' + req.body.username + '" AND isAdmin = 1;', function(err, results, fields) {
-// 		if (results.length > 0) {
-// 			results = JSON.parse(JSON.stringify(results));
-// 			if (bcrypt.compareSync(req.body.password, results[0]['password'])) {
-// 				req.session.user = results[0];
-// 				delete req.session.user.password;
-// 				res.redirect(req.session.redirectTo || '/');
-// 				delete req.session.returnTo;
-// 			}
-// 			else {
-// 				res.render('signin.html');
-// 			}
-// 		}
-// 		else {
-// 			res.render('signin.html', { error : 'Invalid username or password' });
-// 		}
-// 	});
-// });
+app.get('/profile/delete/:username', function(req, res) {
+	console.log(req.params.username);
+	connection.execute('DELETE FROM User WHERE username = ' + '"' + req.params.username + '";', function(err, results, fields) {
+		console.log(err);
+		delete req.session.user;
+		res.redirect('/');
+	});
+});
+
+app.get('/adminSignin', function(req, res) {
+	res.render('signin.html');
+});
+
+app.post('/adminSignin', function(req, res) {
+	connection.query('SELECT * FROM User WHERE username = "' + req.body.username + '" AND isAdmin = 1;', function(err, results, fields) {
+		if (results.length > 0) {
+			results = JSON.parse(JSON.stringify(results));
+			if (bcrypt.compareSync(req.body.password, results[0]['password'])) {
+				req.session.user = results[0];
+				delete req.session.user.password;
+				res.redirect(req.session.redirectTo || '/');
+				delete req.session.returnTo;
+			}
+			else {
+				res.render('signin.html');
+			}
+		}
+		else {
+			res.render('signin.html', { error : 'Invalid username or password' });
+		}
+	});
+});
 
 // app.get('/adminSignup', requireAdmin, function(req, res) {
 // 	res.render('signup.html');
@@ -155,8 +172,8 @@ app.get('/logout', function(req, res) {
 //     connection.query('SELECT * FROM User WHERE username = "' + username + '" OR email = "' + email + '";', function(err, results, fields) {
 //     	console.log(results.length);
 //     	if (results.length == 0) {
-//     		connection.execute('INSERT INTO User (username, password, email, isAdmin) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'", true);', function(err, results, fields) {
-//     			console.log(err);
+//     		connection.execute('INSERT INTO User (username, password, email, isAdmin) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'",'+1+');', function(err, results, fields) {
+//     			console.log(fields);
 //    			});
 //     		res.redirect('/');
    			

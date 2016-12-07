@@ -1,0 +1,15 @@
+<head>
+<link rel="stylesheet" type="text/css" href="/restaurant.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9kyezE1vqlngp7OCyj9diGtZeIsGYxkc"
+  type="text/javascript"></script>
+
+</head>
+<body>
+<div id="restaurant-listing" data-restaurants="{{ results }}">
+	{% if results.length %}
+	<h1 class="nbh-title">Welcome {{ results[0].username }}!</h1>
+      <div class="review-wrap">
+        <a href="/account/delete/{{ results[0].username }}"><button class="see-review" type="button">Delete Account</button></a>
+      </div>
+	{% endif %}
+</div>
