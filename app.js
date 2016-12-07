@@ -124,7 +124,7 @@ app.get('/logout', function(req, res) {
 // });
 
 // app.post('/adminSignin', function(req, res) {
-// 	connection.query('SELECT * FROM User WHERE username = "' + req.body.username + '" AND isAdmin = 0;', function(err, results, fields) {
+// 	connection.query('SELECT * FROM User WHERE username = "' + req.body.username + '" AND isAdmin = 1;', function(err, results, fields) {
 // 		if (results.length > 0) {
 // 			results = JSON.parse(JSON.stringify(results));
 // 			if (bcrypt.compareSync(req.body.password, results[0]['password'])) {
@@ -154,7 +154,7 @@ app.get('/logout', function(req, res) {
 //     connection.query('SELECT * FROM User WHERE username = "' + username + '" OR email = "' + email + '";', function(err, results, fields) {
 //     	console.log(results.length);
 //     	if (results.length == 0) {
-//     		connection.execute('INSERT INTO User (username, password, email, isAdmin) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'", 1);', function(err, results, fields) {
+//     		connection.execute('INSERT INTO User (username, password, email, isAdmin) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'", true);', function(err, results, fields) {
 //     			console.log(err);
 //    			});
 //     		res.redirect('/');
