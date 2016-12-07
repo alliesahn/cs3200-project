@@ -14,7 +14,10 @@
 		<div class="restaurant-info">
 			<h3 class="r-price">Price Average: {{ restaurant.priceAvg }}</h3>
 			<h3 class="r-menu"><a href="{{ restaurant.menuLink }}">Menu</a></h3>
-      <a href="/review/create/{{ restaurant.storeId }}"><button class="write-review" type="button">Write a review</button></a>
+      <div class="review-wrap">
+        <a href="/review/list/{{ restaurant.storeId }}"><button class="see-review" type="button">See reviews</button></a>
+        <a href="/review/create/{{ restaurant.storeId }}"><button class="write-review" type="button">Write a review</button></a>
+      </div>
 		</div>
 	</div>
 	{% endfor %}
