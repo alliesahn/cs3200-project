@@ -6,10 +6,10 @@ var bcrypt = require('bcrypt');
 var app = express();
 var session = require('client-sessions');
 
-var connection = mysql.createConnection(process.env.JAWSDB_URL);
-connection.connect();
-//var connection = mysql.createConnection({host:'localhost', user:'root', password:'root', database:'tacos'});
-app.use('/', express.static('/'));
+//var connection = mysql.createConnection(host:'');
+console.log(process.env.USERNAME);
+var connection = mysql.createConnection({host: process.env.HOST, user: process.env.USERNAME, password: process.env.PASSWORD, database: process.env.DATABASE});
+app.use(express.static(path.join(__dirname, 'css')));
 app.use(express.static(path.join(__dirname, 'js')));
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
