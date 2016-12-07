@@ -180,7 +180,7 @@ app.post('/review/create/:storeId', requireLogin, function(req, res) {
 app.get('/review/list/:storeId', function(req, res) {
 	connection.query('SELECT * FROM Review JOIN TacoRestaurant ON TacoRestaurant.storeId = Review.storeId WHERE storeId = "' + req.params.storeId + '";', function(err, results, fields) {
 		console.log(err);
-		res.render("reviewList.html", results=results);
+		res.render("reviewList.html", { results : results });
 	});
 });
 
