@@ -31,6 +31,7 @@ app.use(session({
 
 function requireLogin (req, res, next) {
 	console.log(req.session.user);
+	req.session.redirectTo = req.path;
 	if (!req.session.user) {
 		res.redirect('/signin');
 	} else {
@@ -90,7 +91,8 @@ app.post('/signin', function(req, res) {
 			if (bcrypt.compareSync(req.body.password, results[0]['password'])) {
 				req.session.user = results[0];
 				delete req.session.user.password;
-				res.redirect('/');
+				res.redirect(req.session.redirectTo || '/');
+				delete req.session.returnTo;
 			}
 			else {
 				res.render('signin.html', { error : 'Invalid username or password' });
