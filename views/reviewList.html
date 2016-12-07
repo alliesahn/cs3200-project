@@ -1,10 +1,13 @@
 <head>
-<link rel="stylesheet" type="text/css" href="../review.css">
+<link rel="stylesheet" type="text/css" href="../css/listings.css">
 </head>
 <body>
-<div class="review-title">
-	<h1>Reviews for</h1>
-</div>
-<div class="review-listings">
+<div class="listing">
+	<h1 class="review-title">Reviews for {{ results[0].name }}</h1>
+	{% for restaurant in results %}
+	<div class="review">
+		<p>{{ restaurant.username }}: {{ restaurant.reviewText }}</p>
+	</div>
+	{% endfor %}
 </div>
 </body>

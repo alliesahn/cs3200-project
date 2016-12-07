@@ -7,8 +7,8 @@ var app = express();
 var session = require('client-sessions');
 
 
-var connection = mysql.createConnection({host:'localhost', user:'root', password:'steviebca', database:'tacos'});
-app.use(express.static(path.join(__dirname, 'css')));
+var connection = mysql.createConnection({host:'localhost', user:'root', password:'root', database:'tacos'});
+app.use('/', express.static('/'));
 app.use(express.static(path.join(__dirname, 'js')));
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
