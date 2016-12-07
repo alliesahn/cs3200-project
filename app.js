@@ -6,8 +6,9 @@ var bcrypt = require('bcrypt');
 var app = express();
 var session = require('client-sessions');
 
-
-var connection = mysql.createConnection({host:'localhost', user:'root', password:'root', database:'tacos'});
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
+connection.connect();
+//var connection = mysql.createConnection({host:'localhost', user:'root', password:'root', database:'tacos'});
 app.use('/', express.static('/'));
 app.use(express.static(path.join(__dirname, 'js')));
 var bodyParser = require('body-parser');
