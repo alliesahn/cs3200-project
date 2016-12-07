@@ -3,10 +3,17 @@
 <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
+<div class="log-home">
+	<p class="log-instructions"> Log in or sign up for an account below! </p>
+	<a href="/signin"><button class="sign-in-home" type="button">Log In</button></a>
+	<a href="/signup"><button class="sign-up-home" type="button">Sign Up</button></a>
+</div>
 <div class="home">
 	<div class="intro-text"> 
+		<img class= "taco-home" src="https://image.freepik.com/free-vector/taco-icon-set-mexican-food_62147502736.jpg">
 		<h1 class="title">In the mood for <span>TACOS?</span></h1>
-		<h3 class="subtitle">Select your city below to look for taco places near you.</h3>
+		<h3 class="description">This Taco Restaurant Locator lets you look for taco restaurants and also gives you basic information about the restaurant. You can view their menu, look for where it is on a map, and also write a review for the restaurant.</h3>
+		<h3 class="subtitle">To get started, select your city below to look for taco places near you.</h3>
 	</div>
 	<form class="cities">
 		<button class="nyc" type="button" onclick="smoothScroll(document.querySelector('.nyc-neighborhoods'))">New York City</button>

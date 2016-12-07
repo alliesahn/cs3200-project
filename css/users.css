@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-.signin-intro {
+.signin-whole {
+	background-color: #FDCA96;
+	height: 60%;
+    width: 45%;
+    margin: 60px auto;
+    padding: 35px 0;
+}
+.signup-whole {
+	background-color: #FDDB96;
+	height: 50%;
+    width: 40%;
+    margin: 60px auto;
+    padding: 35px 0;
+}
+.signin-intro,
+.signup-intro {
 	font: 18px 'Raleway', sans-serif;
-	margin-top: 100px;
 	text-align: center;
 }
 .sign-in {
@@ -11,17 +25,24 @@
 	margin: 0px auto;
 	padding-bottom: 25px;
 	text-align: center;
-	width: 290px;
+	width: 300px;
 }
 
-.username,
-.password {
+label, input {
 	font: 16px 'Montserrat', sans-serif;
 	margin-bottom: 10px;
+    display: inline-block;
+    vertical-align: baseline;
+    width: 125px;
 }
 
-.pw-text {
-	padding-right: 4px;
+.sign-up {
+	font: 16px 'Montserrat', sans-serif;
+	margin: 0px auto;
+	text-align: center;
+	width: 300px;
+	border-top: 2px solid;
+    padding-top: 25px;
 }
 
 .submit-button {
@@ -55,9 +76,9 @@
     margin: 0px auto;
 }
 .register {
-	background-color:#5fd980;
+	background-color:#829595;
 	border-radius:10px;
-	border:1px solid #18ab29;
+	border:1px solid #829595;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -69,5 +90,5 @@
 	width: 150px;
 }
 .register:hover {
-	background-color:#23c24d;
+	background-color:#436060;
 }

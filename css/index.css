@@ -1,4 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.log-home {
+	float: right;
+    text-align: right;
+}
+.log-instructions {
+	font: 14px 'Montserrat', sans-serif;
+}
+.sign-in-home,
+.sign-up-home {
+	background-color:#607D8B;
+	border-radius:8px;
+	border:1px solid #607D8B;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	padding:8px;
+	text-decoration:none;
+	width: 90px;
+}
+.sign-in-home:hover,
+.sign-up-home:hover {
+	background-color:#9FB1B9;
+}
+.sign-in-home:active,
+.sign-up-home:active {
+	position:relative;
+	top:1px;
+}
+
+.taco-home {
+	display: flex;
+	height: 25%;
+	margin: 0 40%;
+}
 
 .home,
 .neighborhoods,
@@ -8,15 +46,27 @@
 }
 
 .intro-text {
-	margin: 150px 0 75px 0;
+	margin: 0px 0 30px 0;
 	text-align: center;
 }
 .title {
-	font: 32px'Raleway', sans-serif;
+	font: 60px'Raleway', sans-serif;
+	margin-bottom: 8px;
+}
+
+.description {
+	color: #A6A6A6;
+	font: 16px 'Montserrat', sans-serif;
+	margin: 0px auto;
+	width: 700px;
 }
 
 .subtitle {
-	font: 18px 'Raleway', sans-serif;
+	border-top: 3px solid;
+	font: 16px 'Montserrat', sans-serif;
+	margin: 40px auto;
+	padding-top: 25px;
+	width: 50%;
 }
 
 span {
