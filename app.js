@@ -7,7 +7,7 @@ var app = express();
 var session = require('client-sessions');
 
 
-var connection = mysql.createConnection({host:'localhost', user:'root', password:'root', database:'tacos'});
+var connection = mysql.createConnection({host:'localhost', user:'root', password:'steviebca', database:'tacos'});
 app.use(express.static(path.join(__dirname, 'css')));
 app.use(express.static(path.join(__dirname, 'js')));
 var bodyParser = require('body-parser');
@@ -166,12 +166,13 @@ app.get('/logout', function(req, res) {
 //     });
 // });
 
-app.get('/review', requireLogin, function(req, res) {
+app.get('/review/create/:storeId', requireLogin, function(req, res) {
 	res.render("createReview.html");
 });
 
-app.post('/:storeid/review', requireLogin, function(req, res) {
-	connection.execute('INSERT INTO Review (storeId, reviewText, username) VALUES (' + req.params.storeId + '"' + req.body.review + '", "' + req.session.user['username'] + '";', function(err, results, fields) {
+app.post('/review/create/:storeId', requireLogin, function(req, res) {
+	connection.execute('INSERT INTO Review (storeId, reviewText, username) VALUES (' + req.params.storeId + ',"' + req.body.review + '", "' + req.session.user['username'] + '");', function(err, results, fields) {
+		console.log(err);
 		res.send('Your review is posted!');
 	});
 })
