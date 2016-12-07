@@ -51,7 +51,15 @@ function requireAdmin (req, res, next) {
 };
 
 app.get('/', function(req, res) {
-	res.sendFile(path.join(__dirname, 'index.html'));
+	var isLoggedIn;
+	if (!req.session.user) {
+		isLoggedIn = false;
+	}
+	else {
+		isLoggedIn = true;
+	}
+	console.log(isLoggedIn);
+	res.render('index.html', { isLoggedIn : isLoggedIn });
 });
 
 app.get('/:cityName/:neighborhoodName', function(req, res) {
