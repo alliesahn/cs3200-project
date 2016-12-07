@@ -23,6 +23,50 @@
 	font: 14px 'Raleway', sans-serif;
 }
 
+.r-menu {
+	background-color:#5fd980;
+	border-radius:8px;
+	border:1px solid #5fd980;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:16px;
+	padding:8px;
+	text-decoration:none;
+	width: 90px;
+	margin-bottom: 5px;
+}
+
+.r-menu:hover {
+	background-color: #23c24d;
+}
+.review-wrap {
+	display: flex;
+    flex-direction: column;
+}
+
+.see-review,
+.write-review {
+	background-color:#607D8B;
+	border-radius:8px;
+	border:1px solid #607D8B;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	padding:5px;
+	text-decoration:none;
+	width: 150px;
+	margin-bottom: 5px;
+}
+
+.see-review:hover,
+.write-review:hover {
+	background-color:#9FB1B9;
+}
+
 .empty-title {
 	font: bold 32px 'Montserrat', sans-serif;
 	margin-top: 80px;

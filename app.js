@@ -181,7 +181,7 @@ app.get('/review/list/:storeId', function(req, res) {
 	connection.query('SELECT * FROM Review WHERE storeId = "' + req.params.storeId + '";', function(err, results, fields) {
 		console.log(err);
 		res.render("reviewList.html", results=results);
-	}
+	});
 });
 
 app.listen(3000, function() {
