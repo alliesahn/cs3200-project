@@ -39,6 +39,16 @@ function requireLogin (req, res, next) {
 	}
 };
 
+function requireAdmin (req, res, next) {
+	req.session.user = { username : 'admin', email : 'admin', isAdmin : true }
+	if (!req.session.user || !req.session.user.isAdmin) {
+		res.redirect('/adminSignin');
+	} 
+	else {
+		next();
+	}
+};
+
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -65,7 +75,7 @@ app.post('/signup', function(req, res) {
     connection.query('SELECT * FROM User WHERE username = "' + username + '" OR email = "' + email + '";', function(err, results, fields) {
     	console.log(results.length);
     	if (results.length == 0) {
-    		connection.execute('INSERT INTO User (username, password, email) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'");', function(err, results, fields) {
+    		connection.execute('INSERT INTO User (username, password, email, isAdmin) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'", 0);', function(err, results, fields) {
     			console.log(err);
    			});
     		req.session.user = { username : req.body.username, email : req.body.email }
@@ -108,6 +118,53 @@ app.get('/logout', function(req, res) {
 	req.session.reset();
 	res.redirect('/');
 });
+
+// app.get('/adminSignin', function(req, res) {
+// 	res.render('signin.html');
+// });
+
+// app.post('/adminSignin', function(req, res) {
+// 	connection.query('SELECT * FROM User WHERE username = "' + req.body.username + '" AND isAdmin = 0;', function(err, results, fields) {
+// 		if (results.length > 0) {
+// 			results = JSON.parse(JSON.stringify(results));
+// 			if (bcrypt.compareSync(req.body.password, results[0]['password'])) {
+// 				req.session.user = results[0];
+// 				delete req.session.user.password;
+// 				res.redirect(req.session.redirectTo || '/');
+// 				delete req.session.returnTo;
+// 			}
+// 			else {
+// 				res.render('signin.html');
+// 			}
+// 		}
+// 		else {
+// 			res.render('signin.html', { error : 'Invalid username or password' });
+// 		}
+// 	});
+// });
+
+// app.get('/adminSignup', requireAdmin, function(req, res) {
+// 	res.render('signup.html');
+// });
+
+// app.post('adminSignup', requireAdmin, function(req, res) {
+// 	var username = req.body.username;
+// 	var email = req.body.email;
+//     var password = req.body.password;
+//     connection.query('SELECT * FROM User WHERE username = "' + username + '" OR email = "' + email + '";', function(err, results, fields) {
+//     	console.log(results.length);
+//     	if (results.length == 0) {
+//     		connection.execute('INSERT INTO User (username, password, email, isAdmin) VALUES ("'+username+'", "'+bcrypt.hashSync(password, 10)+'", "'+email+'", 1);', function(err, results, fields) {
+//     			console.log(err);
+//    			});
+//     		res.redirect('/');
+   			
+//     	}
+//     	else {
+//     		res.redirect('/signin');
+//     	}
+//     });
+// });
 
 app.get('/review', requireLogin, function(req, res) {
 	res.render("createReview.html");
