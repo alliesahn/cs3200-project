@@ -184,7 +184,7 @@ app.get('/review/list/:storeId', function(req, res) {
 		res.render("reviewList.html", { results : results });
 	});
 });
-
-app.listen(3000, function() {
-	console.log("App running on port 3000.");
-});
+app.listen(process.env.PORT || 5000);
+// app.listen(3000, function() {
+// 	console.log("App running on port 3000.");
+// });
