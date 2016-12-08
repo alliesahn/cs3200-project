@@ -1,12 +1,12 @@
 <head>
-<link rel="stylesheet" type="text/css" href="/restaurant.css">
-
-
+<link rel="stylesheet" type="text/css" href="/profile.css">
 </head>
 <body>
-<div id="restaurant-listing">
-	<h1 class="nbh-title">Welcome {{ results.username }}!</h1>
-      <div class="review-wrap">
-        <a href="/profile/delete/{{ results.username }}"><button class="see-review" type="button">Delete Account</button></a>
-      </div>
+<div class="profile">
+	<h1 class="profile-title">Welcome {{ results.username }}!</h1>
+     <div class="profile-buttons">
+     	<a href="/logout"><button class="log-out" type="button">Log Out</button></a>
+        <a href="/profile/delete/{{ results.username }}"><button class="delete-account" type="button">Delete Account</button></a>
+     </div>
+     <a href="/"><button class="go-home" type="button">Home</button></a>
 </div>

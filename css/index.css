@@ -8,6 +8,9 @@
 .log-instructions {
 	font: 14px 'Montserrat', sans-serif;
 }
+.not-logged {
+	font: 14px 'Montserrat', sans-serif;
+}
 .sign-in-home,
 .sign-up-home {
 	background-color:#607D8B;

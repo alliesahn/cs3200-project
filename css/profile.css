@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+
+.profile {
+	text-align: center;
+}
+.profile-title {
+	font: bold 40px 'Raleway', sans-serif;
+	text-align: center;
+	margin-top: 150px;
+}
+
+.log-out,
+.delete-account {
+	background-color:#1155CC;
+	border-radius:8px;
+	border:1px solid #607D8B;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font: bold 16px Arial;
+	padding:8px;
+	text-decoration:none;
+	width: 150px;
+}
+
+.profile-buttons {
+	margin-bottom: 10px;
+	text-align: center;
+}
+.log-out:hover,
+.delete-account:hover {
+	background-color:#9FB1B9;
+}
+
+.go-home {
+	background-color:#5fd980;
+	border-radius:8px;
+	border:1px solid #5fd980;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font: bold 16px Arial;
+	padding:8px;
+	text-decoration:none;
+	width: 150px;
+}
+
+.go-home:hover {
+	background-color:#23c24d;
+}

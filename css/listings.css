@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .review-title {
+	border-bottom: 2px solid;
+	color: #5fd980;
+	font: bold 40px 'Raleway', sans-serif;
+	margin: 80px auto;
 	text-align: center;
+	padding-bottom: 10px;
+	width: 50%;
+}
+
+.user-review {
+	text-align: center;
+}
+
+.review {
+	font: 28px 'Montserrat', sans-serif;
+}
+
+.user {
+	text-decoration: underline;
 }
